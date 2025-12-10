@@ -1,8 +1,5 @@
--- ============================================
--- PASO 1: Tablas independientes (sin FK)
--- ============================================
 
--- 1. Tabla de migraciones de Laravel
+-- Tabla de migraciones de Laravel
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -10,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 2. Tablas de autenticación Laravel
+-- Tablas de autenticación Laravel
 CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 3. Cache
+-- Cache
 CREATE TABLE IF NOT EXISTS `cache` (
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -61,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `cache_locks` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 4. Jobs
+-- Jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -100,11 +97,8 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================
--- PASO 2: Tablas de catálogos básicos
--- ============================================
 
--- 5. Niveles de autorización
+-- Niveles de autorización
 CREATE TABLE IF NOT EXISTS `niveles_autorizacion` (
   `id_nivel` int NOT NULL AUTO_INCREMENT,
   `nombre_nivel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -116,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `niveles_autorizacion` (
   UNIQUE KEY `nombre_nivel` (`nombre_nivel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 6. Secciones
+-- Secciones
 CREATE TABLE IF NOT EXISTS `secciones` (
   `id_seccion` int NOT NULL AUTO_INCREMENT,
   `nombre_seccion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -128,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `secciones` (
   UNIQUE KEY `codigo_seccion` (`codigo_seccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 7. Departamentos
+-- Departamentos
 CREATE TABLE IF NOT EXISTS `departamentos` (
   `id_departamento` int NOT NULL AUTO_INCREMENT,
   `nombre_departamento` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -140,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `departamentos` (
   UNIQUE KEY `codigo_departamento` (`codigo_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 8. Tiendas
+-- Tiendas
 CREATE TABLE IF NOT EXISTS `tiendas` (
   `id_tienda` int NOT NULL AUTO_INCREMENT,
   `nombre_tienda` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -154,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `tiendas` (
   UNIQUE KEY `codigo_tienda` (`codigo_tienda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 9. Proveedores
+-- Proveedores
 CREATE TABLE IF NOT EXISTS `proveedores` (
   `id_proveedor` int NOT NULL AUTO_INCREMENT,
   `nombre_proveedor` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -170,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   UNIQUE KEY `nombre_proveedor` (`nombre_proveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 10. Categorías de artículos
+-- Categorías de artículos
 CREATE TABLE IF NOT EXISTS `categorias_articulos` (
   `id_categoria` int NOT NULL AUTO_INCREMENT,
   `nombre_categoria` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -179,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `categorias_articulos` (
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 11. Colores
+-- Colores
 CREATE TABLE IF NOT EXISTS `colores` (
   `id_color` int NOT NULL AUTO_INCREMENT,
   `nombre_color` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -189,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `colores` (
   UNIQUE KEY `nombre_color` (`nombre_color`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 12. Tipos de material
+-- Tipos de material
 CREATE TABLE IF NOT EXISTS `tipos_material` (
   `id_tipo_material` int NOT NULL AUTO_INCREMENT,
   `nombre_material` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -200,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `tipos_material` (
   UNIQUE KEY `nombre_material` (`nombre_material`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 13. Tipos de unidad de envío
+-- Tipos de unidad de envío
 CREATE TABLE IF NOT EXISTS `tipos_unidad_envio` (
   `id_tipo_unidad` int NOT NULL AUTO_INCREMENT,
   `nombre_tipo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -210,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `tipos_unidad_envio` (
   UNIQUE KEY `nombre_tipo` (`nombre_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 14. Tipos de movimiento
+-- Tipos de movimiento
 CREATE TABLE IF NOT EXISTS `tipos_movimiento` (
   `id_tipo_movimiento` int NOT NULL AUTO_INCREMENT,
   `nombre_tipo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -222,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `tipos_movimiento` (
   UNIQUE KEY `codigo_tipo` (`codigo_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 15. Estados de nota
+-- Estados de nota
 CREATE TABLE IF NOT EXISTS `estados_nota` (
   `id_estado` int NOT NULL AUTO_INCREMENT,
   `nombre_estado` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -232,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `estados_nota` (
   UNIQUE KEY `nombre_estado` (`nombre_estado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 16. Métodos de envío
+-- Métodos de envío
 CREATE TABLE IF NOT EXISTS `metodos_envio` (
   `id_metodo_envio` int NOT NULL AUTO_INCREMENT,
   `nombre_metodo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -244,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `metodos_envio` (
   UNIQUE KEY `nombre_metodo` (`nombre_metodo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 17. Choferes
+-- Choferes
 CREATE TABLE IF NOT EXISTS `choferes` (
   `id_chofer` int NOT NULL AUTO_INCREMENT,
   `nombre_completo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -255,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `choferes` (
   UNIQUE KEY `licencia` (`licencia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 18. Mensajeros
+-- Mensajeros
 CREATE TABLE IF NOT EXISTS `mensajeros` (
   `id_mensajero` int NOT NULL AUTO_INCREMENT,
   `nombre_completo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -266,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `mensajeros` (
   UNIQUE KEY `identificacion` (`identificacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 19. Vehículos
+-- Vehículos
 CREATE TABLE IF NOT EXISTS `vehiculos` (
   `id_vehiculo` int NOT NULL AUTO_INCREMENT,
   `numero_camion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -278,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `vehiculos` (
   UNIQUE KEY `numero_camion` (`numero_camion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 20. Plantillas de correo
+-- Plantillas de correo
 CREATE TABLE IF NOT EXISTS `plantillas_correo` (
   `id_plantilla` int NOT NULL AUTO_INCREMENT,
   `nombre_plantilla` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -290,11 +284,7 @@ CREATE TABLE IF NOT EXISTS `plantillas_correo` (
   UNIQUE KEY `nombre_plantilla` (`nombre_plantilla`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================
--- PASO 3: Tablas con FK de nivel 1
--- ============================================
-
--- 21. Usuarios (depende de niveles_autorizacion)
+-- Usuarios (depende de niveles_autorizacion)
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -317,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_nivel_autorizacion`) REFERENCES `niveles_autorizacion` (`id_nivel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 22. Artículos (depende de categorias_articulos)
+-- Artículos (depende de categorias_articulos)
 CREATE TABLE IF NOT EXISTS `articulos` (
   `id_articulo` int NOT NULL AUTO_INCREMENT,
   `nombre_articulo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -341,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `articulos` (
   CONSTRAINT `articulos_chk_1` CHECK (((`codigo_barra` is not null) or (`numero_serie` is not null)))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 23. Unidades de envío (depende de tipos_unidad_envio, tipos_material, colores)
+-- Unidades de envío (depende de tipos_unidad_envio, tipos_material, colores)
 CREATE TABLE IF NOT EXISTS `unidades_envio` (
   `id_unidad_envio` int NOT NULL AUTO_INCREMENT,
   `id_tipo_unidad` int NOT NULL,
@@ -361,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `unidades_envio` (
   CONSTRAINT `unidades_envio_ibfk_3` FOREIGN KEY (`id_color`) REFERENCES `colores` (`id_color`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 24. Submétodos de envío (depende de metodos_envio)
+-- Submétodos de envío (depende de metodos_envio)
 CREATE TABLE IF NOT EXISTS `submetodos_envio` (
   `id_submetodo` int NOT NULL AUTO_INCREMENT,
   `id_metodo_envio` int NOT NULL,
@@ -374,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `submetodos_envio` (
   CONSTRAINT `submetodos_envio_ibfk_1` FOREIGN KEY (`id_metodo_envio`) REFERENCES `metodos_envio` (`id_metodo_envio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 25. Encargados de tienda (depende de usuarios, tiendas, departamentos)
+-- Encargados de tienda (depende de usuarios, tiendas, departamentos)
 CREATE TABLE IF NOT EXISTS `encargados_tienda` (
   `id_encargado` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -393,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `encargados_tienda` (
   CONSTRAINT `encargados_tienda_ibfk_3` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id_departamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 26. Permisos de secciones (depende de niveles_autorizacion, secciones)
+-- Permisos de secciones (depende de niveles_autorizacion, secciones)
 CREATE TABLE IF NOT EXISTS `permisos_secciones` (
   `id_permiso_seccion` int NOT NULL AUTO_INCREMENT,
   `id_nivel_autorizacion` int NOT NULL,
@@ -409,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `permisos_secciones` (
   CONSTRAINT `permisos_secciones_ibfk_2` FOREIGN KEY (`id_seccion`) REFERENCES `secciones` (`id_seccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 27. Permisos de tipos de movimiento (depende de niveles_autorizacion, tipos_movimiento)
+-- Permisos de tipos de movimiento (depende de niveles_autorizacion, tipos_movimiento)
 CREATE TABLE IF NOT EXISTS `permisos_tipos_movimiento` (
   `id_permiso_movimiento` int NOT NULL AUTO_INCREMENT,
   `id_nivel_autorizacion` int NOT NULL,
@@ -423,11 +413,7 @@ CREATE TABLE IF NOT EXISTS `permisos_tipos_movimiento` (
   CONSTRAINT `permisos_tipos_movimiento_ibfk_2` FOREIGN KEY (`id_tipo_movimiento`) REFERENCES `tipos_movimiento` (`id_tipo_movimiento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================
--- PASO 4: Tabla notas_movimiento (nivel 2)
--- ============================================
-
--- 28. Notas de movimiento (depende de muchas tablas)
+-- Notas de movimiento (depende de muchas tablas)
 CREATE TABLE IF NOT EXISTS `notas_movimiento` (
   `id_nota` int NOT NULL AUTO_INCREMENT,
   `numero_nota` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -482,11 +468,8 @@ CREATE TABLE IF NOT EXISTS `notas_movimiento` (
   CONSTRAINT `notas_movimiento_chk_1` CHECK (((`id_tienda_origen` is not null) and ((`id_tienda_destino` is not null) or (`id_proveedor_destino` is not null))))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================
--- PASO 5: Tablas dependientes de notas_movimiento (nivel 3)
--- ============================================
 
--- 29. Detalle de nota artículos (depende de notas_movimiento, articulos, unidades_envio)
+-- Detalle de nota artículos (depende de notas_movimiento, articulos, unidades_envio)
 CREATE TABLE IF NOT EXISTS `detalle_nota_articulos` (
   `id_detalle` int NOT NULL AUTO_INCREMENT,
   `id_nota` int NOT NULL,
@@ -503,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `detalle_nota_articulos` (
   CONSTRAINT `detalle_nota_articulos_ibfk_3` FOREIGN KEY (`id_unidad_envio`) REFERENCES `unidades_envio` (`id_unidad_envio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 30. Historial de estados de nota (depende de notas_movimiento, estados_nota, usuarios)
+-- Historial de estados de nota (depende de notas_movimiento, estados_nota, usuarios)
 CREATE TABLE IF NOT EXISTS `historial_estados_nota` (
   `id_historial` int NOT NULL AUTO_INCREMENT,
   `id_nota` int NOT NULL,
@@ -523,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `historial_estados_nota` (
   CONSTRAINT `historial_estados_nota_ibfk_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 31. Firmas digitales (depende de notas_movimiento)
+-- Firmas digitales (depende de notas_movimiento)
 CREATE TABLE IF NOT EXISTS `firmas_digitales` (
   `id_firma` int NOT NULL AUTO_INCREMENT,
   `id_nota` int NOT NULL COMMENT 'FK a notas_movimiento',
@@ -546,7 +529,7 @@ CREATE TABLE IF NOT EXISTS `firmas_digitales` (
   CONSTRAINT `firmas_digitales_ibfk_1` FOREIGN KEY (`id_nota`) REFERENCES `notas_movimiento` (`id_nota`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 32. Log de correos (depende de notas_movimiento, plantillas_correo)
+-- Log de correos (depende de notas_movimiento, plantillas_correo)
 CREATE TABLE IF NOT EXISTS `log_correos` (
   `id_log_correo` int NOT NULL AUTO_INCREMENT,
   `id_nota` int NOT NULL,
@@ -563,7 +546,7 @@ CREATE TABLE IF NOT EXISTS `log_correos` (
   CONSTRAINT `log_correos_ibfk_2` FOREIGN KEY (`id_plantilla`) REFERENCES `plantillas_correo` (`id_plantilla`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 33. Permisos de procesos de usuario (depende de usuarios, estados_nota)
+-- Permisos de procesos de usuario (depende de usuarios, estados_nota)
 CREATE TABLE IF NOT EXISTS `permisos_procesos_usuario` (
   `id_permiso_proceso` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
